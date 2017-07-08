@@ -1,0 +1,15 @@
+name: bui-example
+version: 0+dev.3
+commit_hash: non-git
+uncommitted_changes: false
+jobs:
+- name: web_server
+  version: ac544ea5271eb2d35cf1d42eb7064283c0fbc688
+  fingerprint: ac544ea5271eb2d35cf1d42eb7064283c0fbc688
+  sha1: e765d32b2338bde48b91e8037a330bd73e53d6bb
+packages:
+- name: nginx
+  version: 0d2bf2e9a18e0202b87679c8e652d2ba26e6485f
+  fingerprint: 0d2bf2e9a18e0202b87679c8e652d2ba26e6485f
+  sha1: c43e63e4fafb4f7772b7f271c2b06ff4fc069627
+  dependencies: []

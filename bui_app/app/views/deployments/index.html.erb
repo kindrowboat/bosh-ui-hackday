@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Deployments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @deployments.each do |deployment| %>
+      <tr>
+        <td><%= deployment.name %></td>
+        <td><%= link_to 'Show', deployment %></td>
+        <td><%= link_to 'Edit', edit_deployment_path(deployment) %></td>
+        <td><%= link_to 'Destroy', deployment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Deployment', new_deployment_path %>

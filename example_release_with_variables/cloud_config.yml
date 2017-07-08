@@ -1,0 +1,11 @@
+networks:
+- name: default
+  type: manual
+  subnets:
+  - reserved: [10.244.0.1]
+    range: 10.244.0.0/24
+vm_types:
+- name: default
+compilation:
+  workers: 1
+  network: default

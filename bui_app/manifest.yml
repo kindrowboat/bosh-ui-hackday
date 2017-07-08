@@ -1,0 +1,37 @@
+---
+director_uuid: ignore
+instance_groups:
+- azs:
+  - z1
+  instances: 1
+  jobs:
+  - name: web_server
+    properties:
+      web_server:
+        joke: "((joke))"
+        punchline: "((punchline))"
+    release: bui-example
+  lifecycle: service
+  name: web_server
+  networks:
+  - name: default
+  stemcell: bosh-warden-boshlite-ubuntu-trusty-go_agent
+  update:
+    canary_watch_time: 5000 - 60000
+    update_watch_time: 5000 - 60000
+  vm_type: default
+name: bui-example
+releases:
+- name: bui-example
+  version: 0+dev.10
+stemcells:
+- alias: bosh-warden-boshlite-ubuntu-trusty-go_agent
+  os: ubuntu-trusty
+  version: '3421.9'
+update:
+  canaries: 1
+  canary_watch_time: 30000-300000
+  max_errors: 2
+  max_in_flight: 1
+  serial: true
+  update_watch_time: 30000-300000

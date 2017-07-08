@@ -1,0 +1,11 @@
+<%= form_tag("/deployments/#{@deployment_name}", method: 'put') do %>
+  <% @variables.each do |name, value| %>
+    <% html_name = "vars[#{name}]" %>
+    <%= label_tag html_name, name %>
+    <%= text_field_tag html_name, value %>
+  <% end %>
+
+  <div class="actions">
+    <%= submit_tag("Deploy") %>
+  </div>
+<% end %>

@@ -1,0 +1,34 @@
+#!/bin/bash
+set -e
+
+RUN_DIR=/var/vcap/sys/run/web_server
+LOG_DIR=/var/vcap/sys/log/web_server
+JOB_DIR=/var/vcap/jobs/web_server
+PIDFILE=${RUN_DIR}/pidfile
+
+case $1 in
+  start)
+    mkdir -p $RUN_DIR
+    mkdir -p $LOG_DIR
+    chown vcap:vcap $LOG_DIR
+
+    echo $$ > $PIDFILE
+
+    exec /var/vcap/packages/nginx/sbin/nginx \
+      -c ${JOB_DIR}/config/nginx.conf \
+      >> ${LOG_DIR}/stdout.log \
+      2>> ${LOG_DIR}/stderr.log
+    ;;
+
+  stop)
+    PID=$(head -1 ${PIDFILE})
+    kill ${PID}
+    while [ -e /proc/${PID} ]; do sleep 0.1; done
+    rm -f ${PIDFILE}
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}"
+  ;;
+
+esac

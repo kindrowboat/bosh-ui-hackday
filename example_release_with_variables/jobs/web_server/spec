@@ -1,0 +1,15 @@
+---
+name: web_server
+templates:
+  ctl.erb: bin/ctl
+  nginx_conf.erb: config/nginx.conf
+  mime.types: config/mime.types
+  index.html.erb: pages/index.html
+
+packages: [nginx]
+
+properties:
+  web_server.joke:
+    description: "The joke you want to say!"
+  web_server.punchline:
+    description: "The thing that will make them laugh!"
